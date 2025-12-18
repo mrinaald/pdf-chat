@@ -27,4 +27,5 @@ python test_ollama.py
 ```sh
 python ingest.py --file [pdf_file_path]
 python app.py
+streamlit run app.py -- --streamlit
 ```

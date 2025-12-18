@@ -121,63 +121,62 @@ def run_cli():
 
 def run_streamlit():
     """Run the Streamlit UI version"""
-    pass
-    # st.set_page_config(page_title="PDF Chat with RAG")
+    st.set_page_config(page_title="PDF Chat with RAG")
 
-    # st.title("PDF Chat Assistant")
-    # st.markdown("Ask questions about your PDF documents using RAG (Retrieval-Augmented Generation)")
+    st.title("PDF Chat Assistant")
+    st.markdown("Ask questions about your PDF documents using RAG (Retrieval-Augmented Generation)")
 
-    # # Initialize RAG chain
-    # if 'rag_chain' not in st.session_state:
-    #     with st.spinner("Initializing RAG pipeline..."):
-    #         st.session_state.rag_chain = create_rag_chain()
-    #     st.success("RAG pipeline initialized successfully!")
+    # Initialize RAG chain
+    if 'rag_chain' not in st.session_state:
+        with st.spinner("Initializing RAG pipeline..."):
+            st.session_state.rag_chain = create_rag_chain()
+        st.success("RAG pipeline initialized successfully!")
 
-    # # Initialize chat history
-    # if 'messages' not in st.session_state:
-    #     st.session_state.messages = []
+    # Initialize chat history
+    if 'messages' not in st.session_state:
+        st.session_state.messages = []
 
-    # # Display chat history
-    # for message in st.session_state.messages:
-    #     with st.chat_message(message["role"]):
-    #         st.markdown(message["content"])
+    # Display chat history
+    for message in st.session_state.messages:
+        with st.chat_message(message["role"]):
+            st.markdown(message["content"])
 
-    # # Chat input
-    # if question := st.chat_input("Ask a question about your documents..."):
-    #     # Add user message to chat history
-    #     st.session_state.messages.append({"role": "user", "content": question})
+    # Chat input
+    if question := st.chat_input("Ask a question about your documents..."):
+        # Add user message to chat history
+        st.session_state.messages.append({"role": "user", "content": question})
 
-    #     # Display user message
-    #     with st.chat_message("user"):
-    #         st.markdown(question)
+        # Display user message
+        with st.chat_message("user"):
+            st.markdown(question)
 
-    #     # Generate response
-    #     with st.chat_message("assistant"):
-    #         with st.spinner("Thinking..."):
-    #             try:
-    #                 response = st.session_state.rag_chain.invoke(question)
-    #                 st.markdown(response)
+        # Generate response
+        with st.chat_message("assistant"):
+            with st.spinner("Thinking..."):
+                try:
+                    response = st.session_state.rag_chain.invoke(question)
+                    st.markdown(response)
 
-    #                 # Add assistant response to chat history
-    #                 st.session_state.messages.append({"role": "assistant", "content": response})
-    #             except Exception as e:
-    #                 error_msg = f"Error: {str(e)}"
-    #                 st.error(error_msg)
-    #                 st.session_state.messages.append({"role": "assistant", "content": error_msg})
+                    # Add assistant response to chat history
+                    st.session_state.messages.append({"role": "assistant", "content": response})
+                except Exception as e:
+                    error_msg = f"Error: {str(e)}"
+                    st.error(error_msg)
+                    st.session_state.messages.append({"role": "assistant", "content": error_msg})
 
-    # # Sidebar
-    # with st.sidebar:
-    #     st.header("ℹ️ Information")
-    #     st.markdown(f"**Model:** {OLLAMA_MODEL}")
-    #     st.markdown(f"**Vector DB:** ChromaDB")
-    #     st.markdown(f"**Embeddings:** all-MiniLM-L6-v2")
+    # Sidebar
+    with st.sidebar:
+        st.header("Information")
+        st.markdown(f"**Model:** {OLLAMA_MODEL}")
+        st.markdown(f"**Vector DB:** ChromaDB")
+        st.markdown(f"**Embeddings:** all-MiniLM-L6-v2")
 
-    #     if st.button("Clear Chat History"):
-    #         st.session_state.messages = []
-    #         st.rerun()
+        if st.button("Clear Chat History"):
+            st.session_state.messages = []
+            st.rerun()
 
-    #     st.markdown("---")
-    #     # st.markdown("Made with love using LangChain & Streamlit")
+        st.markdown("---")
+        # st.markdown("Made with love using LangChain & Streamlit")
 
 
 def _main():
