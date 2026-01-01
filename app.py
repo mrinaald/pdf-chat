@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# author: Mrinaal Dogra (azadmrinaal@gmail.com)
+# author: Mrinaal Dogra (mrinaald)
 
 import argparse
 
@@ -54,7 +54,7 @@ Context: {context}
 
 Question: {question}
 
-Answer: Provide a detailed answer based on the context above. If the answer cannot be found in the context, say "I cannot find this information in the provided documents."
+Answer: Provide a detailed answer based ONLY on the context above. If the answer cannot be found in the context, say "I cannot find this information in the provided documents."
 """
 
     prompt = ChatPromptTemplate.from_template(template)

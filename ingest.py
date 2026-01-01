@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# author: Mrinaal Dogra (azadmrinaal@gmail.com)
+# author: Mrinaal Dogra (mrinaald)
 
 import argparse
 import asyncio
@@ -27,16 +27,16 @@ async def _main():
         default="",
         help='The path to the PDF file',
     )
-    parser.add_argument(
-        '--dir',
-        type=str,
-        default="",
-        help='The path to the directory containing multiple PDF file',
-    )
+    # parser.add_argument(
+    #     '--dir',
+    #     type=str,
+    #     default="",
+    #     help='The path to the directory containing multiple PDF file',
+    # )
 
     args = parser.parse_args()
 
-    if not args.file and not args.dir:
+    if not args.file:
         print("Please provide a PDF file path using --file")
         exit(1)
 

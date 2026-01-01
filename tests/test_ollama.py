@@ -1,3 +1,6 @@
+# -*- coding: utf-8 -*-
+# author: Mrinaal Dogra (mrinaald)
+
 import asyncio
 from ollama import AsyncClient
 
